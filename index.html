@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAP ME</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #flashbang {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img id="flashbang" src="flashbang.webp" alt="Flashbang">
+
+    <audio id="flashbang-sound" src="flashbang.mp3"></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Функция для включения полноэкранного режима
+            function enterFullscreen() {
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
+                    document.documentElement.msRequestFullscreen();
+                }
+            }
+
+            // Вход в полноэкранный режим при загрузке
+            enterFullscreen();
+        });
+
+        document.getElementById('flashbang').addEventListener('click', function() {
+            var flashbangImg = document.getElementById('flashbang');
+            var flashbangSound = document.getElementById('flashbang-sound');
+
+            // Воспроизводим звук
+            flashbangSound.play();
+
+            // Меняем фон на белый
+            document.body.style.backgroundColor = 'white';
+
+            // Скрываем изображение
+            flashbangImg.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
